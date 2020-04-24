@@ -51,6 +51,7 @@ cd kubespray-2.12.5
   > The option `--become` is required, as for example writing SSL keys in /etc/,
   > installing packages and interacting with various systemd daemons.
   > Without --become the playbook will fail to run!
+  
   ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root --user=devops cluster.yml
 
 * 注意事项
