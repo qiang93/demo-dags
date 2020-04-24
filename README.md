@@ -1,5 +1,6 @@
 # 执行机需满足如下条件
 ansible > v2.7.8
+
 pip3
 
 > 建立免密钥通信后所有操作可通过ansible来管理，
@@ -39,11 +40,13 @@ cd kubespray-2.12.5
 * Update Ansible inventory file with inventory builder 
 
   declare -a IPS=(10.10.1.3 10.10.1.4 10.10.1.5)
+  
   CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
 * Review and change parameters under ``inventory/mycluster/group_vars`` 
 
   cat inventory/mycluster/group_vars/all/all.yml
+  
   cat inventory/mycluster/group_vars/k8s-cluster/k8s-cluster.yml
 
 * exec ansible-playbooks
