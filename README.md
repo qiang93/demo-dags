@@ -22,7 +22,8 @@ unzip v2.12.5
 cd kubespray-2.12.5
 ```
 # Usage
-* Install dependencies from ``requirements.txt``
+* Install dependencies from ``requirements.txt`` 
+
   sudo pip3 install -r requirements.txt
 
   > ERROR: paramiko 2.7.1 has requirement cryptography>=2.5, but you'll have cryptography 2.1.4 which is incompatible.
