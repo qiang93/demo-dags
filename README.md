@@ -82,3 +82,9 @@ cd kubespray-2.12.5
     ```
 # 升级集群
   
+# 使用小技巧
+  1、当安装某个阶段失败了，可针对性测试 
+    如只针对tags为master的进行运行
+    > ansible-playbook -i hosts cluster.yml -uroot -k --tags master
+
+  2、scripts/get-tags.sh可以查看所有步骤 
