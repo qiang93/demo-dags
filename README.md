@@ -32,14 +32,17 @@ cd kubespray-2.12.5
     解决方法：
     pip install cryptography==2.5
     ```
-* Copy ``inventory/sample`` as ``inventory/mycluster``
+* Copy ``inventory/sample`` as ``inventory/mycluster`` 
+
   cp -rfp inventory/sample inventory/mycluster
 
-* Update Ansible inventory file with inventory builder
+* Update Ansible inventory file with inventory builder 
+
   declare -a IPS=(10.10.1.3 10.10.1.4 10.10.1.5)
   CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
-* Review and change parameters under ``inventory/mycluster/group_vars``
+* Review and change parameters under ``inventory/mycluster/group_vars`` 
+
   cat inventory/mycluster/group_vars/all/all.yml
   cat inventory/mycluster/group_vars/k8s-cluster/k8s-cluster.yml
 
@@ -57,15 +60,18 @@ cd kubespray-2.12.5
 # 添加节点
   1、建立免密钥认证，hosts.yaml添加相应的host
   2、--limit=node1限制Kubespray来避免干扰群集中的其他节点
+  
     ```
     ansible-playbook -i inventory/mycluster/hosts.yaml scale.yml --limit=node5
     ```
 # 删除节点
   1、驱除节点pod
+  
     ```
     kubectl drain NODE_NAME
     ```
   2、传递-e node=NODE_NAME参数，以将执行限制为要删除的节点。
+  
     ```
     ansible-playbook -i inventory/mycluster/hosts.yaml remove-node.yml -e node=node4
     ```
