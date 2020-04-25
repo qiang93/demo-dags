@@ -40,25 +40,29 @@ cd kubespray-2.12.5
 
 * Update Ansible inventory file with inventory builder 
 
+  ```
   declare -a IPS=(10.10.1.3 10.10.1.4 10.10.1.5)
   
   CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
-
+  ```
 * Review and change parameters under ``inventory/mycluster/group_vars`` 
 
+  ```
   cat inventory/mycluster/group_vars/all/all.yml
   
   cat inventory/mycluster/group_vars/k8s-cluster/k8s-cluster.yml
-
+  ```
+  
 * exec ansible-playbooks
   > Deploy Kubespray with Ansible Playbook - run the playbook as root
   > The option `--become` is required, as for example writing SSL keys in /etc/,
   > installing packages and interacting with various systemd daemons.
   > Without --become the playbook will fail to run!
   
-  
+  ```
   ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root --user=devops cluster.yml
-
+  ```
+  
 * 注意事项
   > ansible_host：是ansible远程执行的地址，ip、access_ip是服务地址，在公有云服务器上要注意
   > 需要关闭防火墙，服务之间需要能ping通信
